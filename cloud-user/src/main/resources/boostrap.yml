@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    active: default
+  application:
+    name: cloud-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 124.71.6.172:8848
+        username: nacos
+        password: nacos
+        namespace: 95bef45f-8bf8-45a2-88b9-9b28021c93e3
+      config:
+        server-addr: 124.71.6.172:8848
+        username: nacos
+        password: nacos
+        namespace: 95bef45f-8bf8-45a2-88b9-9b28021c93e3
+
+
+
