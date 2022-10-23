@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: cloud-gateway
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 124.71.6.172:8848
+        username: nacos
+        password: nacos
+      config:
+        server-addr: 124.71.6.172:8848
+        username: nacos
+        password: nacos
+        file-extension: yaml
+
+
+
