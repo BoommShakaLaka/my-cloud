@@ -16,6 +16,6 @@ public class UserController {
         user.setName("贾宝玉");
         user.setAddress("怡红院");
         log.info("人员信息：{}",user);
-        return user;
+        return user; 
     }
 }
