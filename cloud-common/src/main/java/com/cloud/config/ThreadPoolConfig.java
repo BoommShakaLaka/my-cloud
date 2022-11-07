@@ -19,7 +19,6 @@ public class ThreadPoolConfig {
         executor.setQueueCapacity(CommonConfig.properties().getThreadPool().getQueueCapacity());
         executor.setKeepAliveSeconds(CommonConfig.properties().getThreadPool().getKeepAliveSeconds());
         executor.setThreadNamePrefix(CommonConfig.properties().getThreadPool().getThreadNamePrefix());
-
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.setWaitForTasksToCompleteOnShutdown(true);
         return executor;

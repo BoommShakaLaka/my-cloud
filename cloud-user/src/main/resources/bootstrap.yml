@@ -14,10 +14,27 @@ spring:
         username: nacos
         password: nacos
         file-extension: yaml
-#        extension-configs:
-#          - data-id: common.yaml
-#            group: DEFAULT_GROUP
-#            refresh: true
+        extension-configs:
+          - data-id: common.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/mysql_local?serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 12345678
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 5
+      maximum-pool-size: 100
+      auto-commit: true
+      pool-name: DataSourceHikariCP
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      keepalive-time: 120000
+mybatis:
+  type-aliases-package: com.cloud.entity.dto
+  mapper-locations: classpath*:mapper/*.xml
 
 
 
