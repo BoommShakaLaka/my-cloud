@@ -20,7 +20,7 @@ public class CommonConfig {
 
     @Data
     @Component
-    @ConfigurationProperties(prefix = "common")
+    @ConfigurationProperties(prefix = "spring.common")
     public static class Properties {
         private ThreadPool threadPool;
         private User user;

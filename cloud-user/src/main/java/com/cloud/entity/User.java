@@ -10,5 +10,4 @@ public class User {
     private String sex;
     private String college;
     private String address;
-
 }
