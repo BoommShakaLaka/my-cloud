@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: cloud-manager
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 124.71.6.172:8848
+        username: nacos
+        password: nacos
+      config:
+        server-addr: 124.71.6.172:8848
+        username: nacos
+        password: nacos
+        file-extension: yaml
+        extension-configs:
+          - data-id: common.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+
+
+
+
