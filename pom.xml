@@ -15,6 +15,7 @@
         <module>cloud-rpc</module>
         <module>cloud-encrypt</module>
         <module>mod-cache</module>
+        <module>cloud-demo</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
