@@ -15,7 +15,7 @@ public class KafkaConfig {
 
     @Bean
     @Primary
-    @ConfigurationProperties(prefix = "spring.kafka")
+    @ConfigurationProperties(prefix = "kafka")
     public KafkaProperties kafkaProperties() {
         return new KafkaProperties();
     }

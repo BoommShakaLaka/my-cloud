@@ -5,12 +5,6 @@ spring:
         namespace: 48c05ef3-1a13-4234-9113-8a9f5c47ac71
       config:
         namespace: 48c05ef3-1a13-4234-9113-8a9f5c47ac71
-    gateway:
-      routes:
-        - id: user_route
-          uri: http://localhost:8082
-          predicates:
-            - Path=/user
 
 
 

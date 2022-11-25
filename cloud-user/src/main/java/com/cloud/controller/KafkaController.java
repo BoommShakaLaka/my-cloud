@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 @RestController
 public class KafkaController {
     @Resource
-    private KafkaTemplate kafkaTemplate;
+    private KafkaTemplate<String, String> kafkaTemplate;
 
     @GetMapping("sentMessageToKafka")
     public void sentMessageToKafka() {

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RefreshScope //有此注解，@value注解会实时生效
 public class UserController {
-    @Value("${spring.common.urls.url1}")
+    @Value("${common.urls.url1}")
     private String url;
 
     @Autowired
