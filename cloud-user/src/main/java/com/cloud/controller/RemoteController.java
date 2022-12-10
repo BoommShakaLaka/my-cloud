@@ -1,21 +1,34 @@
 package com.cloud.controller;
 
-import org.apache.http.client.HttpClient;
+import com.cloud.client.MaterialFeignClent;
+import com.cloud.entity.Material;
+import com.cloud.service.MaterialService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 public class RemoteController {
+    //    @Resource
+//    RestTemplate restTemplate;
+//    @Resource
+//    HttpClient httpClient;
     @Resource
-    RestTemplate restTemplate;
-    @Resource
-    HttpClient httpClient;
+    MaterialService materialService;
+//    @Resource
+//    MaterialService materialService;
 
-    @GetMapping("/restTempate")
-    public void fun1() {
-
+    @GetMapping("/user/restTempate")
+    public List<Material> fun1() {
+        return materialService.queryMaterialsByCompany("aaaa");
     }
+
+    @GetMapping("/restTempate2")
+    public Material fun2() {
+        return materialService.queryMaterialInfo("aaaa");
+    }
+
 }

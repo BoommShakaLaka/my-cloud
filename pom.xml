@@ -9,13 +9,14 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>cloud-gateway</module>
-        <module>cloud-common</module>
+        <module>mod-common</module>
         <module>cloud-manage</module>
         <module>cloud-user</module>
-        <module>cloud-rpc</module>
-        <module>cloud-encrypt</module>
+        <module>mod-rpc</module>
+        <module>mod-encrypt</module>
         <module>mod-cache</module>
         <module>cloud-demo</module>
+        <module>cloud-order</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

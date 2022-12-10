@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.mapper.OrderMapper">
+
+    <sql id="orderColumn">
+        order_no,
+        user_id,
+        goods,
+        amount,
+        to_adress,
+        from_adress,
+        create_date,
+        update_date
+    </sql>
+
+    <sql id="orderColumnNew">
+        order_no
+        as orderNo,
+        user_id as userId,
+        goods,
+        amount,
+        to_adress as toAdress,
+        from_adress as fromAdress,
+        create_date as createDate,
+        update_date as updateDate
+    </sql>
+
+    <resultMap id="orderMapping" type="com.cloud.entity.Order">
+        <!--id 属性用来映射主建字段-->
+        <id column="order_no" property="orderNo" javaType="Integer"/>
+        <!--result属性映射非主建字段-->
+        <result column="user_id" property="userId" javaType="Integer"/>
+        <result column="to_adress" property="toAdress" javaType="String"/>
+        <result column="from_adress" property="fromAdress" javaType="String"/>
+        <result column="create_date" property="createDate" javaType="date"/>
+        <result column="update_date" property="updateDate" javaType="date"/>
+    </resultMap>
+
+    <select id="queryOrderById" resultType="com.cloud.entity.Order" resultMap="orderMapping">
+        select
+        <include refid="orderColumn"/>
+        <!-- 因为order是mysql关键字,所以指定了库名 -->
+        from mycloud.order where order_no = #{orderId}
+    </select>
+
+</mapper>
