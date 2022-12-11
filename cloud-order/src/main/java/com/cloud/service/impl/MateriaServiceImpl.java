@@ -19,7 +19,7 @@ public class MateriaServiceImpl implements MaterialService {
         return Arrays.asList(new Material(100001, "红酒", "荣国府"),
                 new Material(100002, "白酒酒", "宁国府"));
     }
-
+    
     @Override
     public Material queryMaterialInfo(String materialNo) {
         return new Material(100002, "白酒酒", "大观园");

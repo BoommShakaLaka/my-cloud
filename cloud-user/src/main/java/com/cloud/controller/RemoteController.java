@@ -1,9 +1,7 @@
 package com.cloud.controller;
 
-import com.cloud.client.MaterialFeignClent;
 import com.cloud.entity.Material;
 import com.cloud.service.MaterialService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +19,7 @@ public class RemoteController {
 //    @Resource
 //    MaterialService materialService;
 
-    @GetMapping("/user/restTempate")
+    @GetMapping("/restTempate")
     public List<Material> fun1() {
         return materialService.queryMaterialsByCompany("aaaa");
     }
