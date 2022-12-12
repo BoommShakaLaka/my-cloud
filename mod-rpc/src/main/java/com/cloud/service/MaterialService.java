@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient("cloud-order")
+
 public interface MaterialService {
     @GetMapping("/material")
     Material queryMaterialInfo(@RequestParam("materialNo") String materialNo);

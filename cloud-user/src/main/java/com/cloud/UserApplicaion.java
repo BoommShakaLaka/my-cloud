@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableDiscoveryClient
 @EnableConfigurationProperties
 @EnableScheduling
-@EnableFeignClients(basePackages = "com.cloud.service")
+@EnableFeignClients(basePackages = "com.cloud.client")
 @MapperScan("com.cloud.mapper")
 public class UserApplicaion {
     public static void main(String[] args) {
