@@ -23,13 +23,15 @@ public class UserController {
     private UserService userService;
 
 
-    @GetMapping("/user")
+    @GetMapping("/info")
     public User getUser() {
+        log.info("UserController#getUser:{}", 1);
         return userService.queryUserById(1);
     }
 
-    @GetMapping("/user/{name}")
+    @GetMapping("/info/{name}")
     public User queryUserByName(@PathVariable("name") String name) {
+        log.info("UserController#queryUserByName:{}", name);
         return userService.queryUserByName(name);
     }
 
@@ -45,8 +47,6 @@ public class UserController {
     public void testConfig() {
         System.out.println(url);
     }
-
-
 
 
 }

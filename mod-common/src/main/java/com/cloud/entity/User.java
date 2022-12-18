@@ -10,4 +10,10 @@ public class User {
     private String sex;
     private String college;
     private String address;
+
+    public User(Integer id, String name, String college) {
+        this.id = id;
+        this.name = name;
+        this.college = college;
+    }
 }

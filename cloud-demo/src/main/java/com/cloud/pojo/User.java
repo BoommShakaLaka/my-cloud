@@ -14,4 +14,10 @@ public class User {
     private Integer age;
     private Integer sex;
     private String address;
+
+    public User(Integer userId, String name, String username) {
+        this.userId = userId;
+        this.name = name;
+        this.username = username;
+    }
 }
