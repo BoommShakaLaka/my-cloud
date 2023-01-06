@@ -16,7 +16,7 @@ import java.util.List;
  *         apache 提供的通用工具类
  *
  *         3.Feign
- *         Spring Cloud 提供的基于Http协议的远程调用n
+ *         Spring Cloud 提供的基于Http协议的远程调用
  *
  *
  *         4.RestTemplate
