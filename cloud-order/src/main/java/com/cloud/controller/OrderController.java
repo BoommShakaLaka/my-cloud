@@ -14,7 +14,7 @@ public class OrderController {
     private OrderService orderService;
 
 
-    @GetMapping("/order")
+    @GetMapping("/info")
     public Order queryOrderById(@RequestParam("orderId") Long orderId) {
         return orderService.queryOrderById(orderId);
     }
