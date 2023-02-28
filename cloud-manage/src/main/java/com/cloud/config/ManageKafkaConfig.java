@@ -16,8 +16,7 @@ public class ManageKafkaConfig {
 
     @Bean("kafkaPrimaryListenerContainerFactory")
     @Primary
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<Integer, String>>
-    kafkaPrimaryListenerContainerFactory(KafkaProperties kafkaProperties) {
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<Integer, String>> kafkaPrimaryListenerContainerFactory(KafkaProperties kafkaProperties) {
         ConcurrentKafkaListenerContainerFactory<Integer, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties()));
         factory.setConcurrency(8);

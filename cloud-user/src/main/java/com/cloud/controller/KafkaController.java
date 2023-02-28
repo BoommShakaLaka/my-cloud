@@ -13,6 +13,6 @@ public class KafkaController {
 
     @GetMapping("sentMessageToKafka")
     public void sentMessageToKafka() {
-        kafkaTemplate.send("myTopic", "testKey", "my message");
+        kafkaTemplate.send("my_topic", "testKey", "my message");
     }
 }
