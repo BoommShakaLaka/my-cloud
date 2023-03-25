@@ -23,14 +23,14 @@ import java.util.concurrent.TimeUnit;
 public class CacheConfig extends CachingConfigurerSupport {
 
     @Bean
-    public CacheManager springCacheManager() {
+    @Primary
+    public CaffeineCacheManager springCacheManager() {
         CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
         caffeineCacheManager.setCaffeine(Caffeine.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES));
         return caffeineCacheManager;
     }
 
     @Bean
-    @Primary
     public CacheManager redisCacheManager(RedisConnectionFactory redisConnectionFactory) {
         return RedisCacheManager.builder(redisConnectionFactory)
                 .cacheDefaults(RedisCacheConfiguration.defaultCacheConfig()
