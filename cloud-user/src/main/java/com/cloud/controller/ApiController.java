@@ -20,6 +20,7 @@ public class ApiController {
 
     @GetMapping("cache/{cacheName}/{key}")
     public Object cache(@PathVariable String cacheName, @PathVariable Integer key) {
+        // 从缓存中获取
         Cache cache = cacheManager.getCache(cacheName);
         if (cache != null && cache.getNativeCache() instanceof com.github.benmanes.caffeine.cache.Cache) {
             com.github.benmanes.caffeine.cache.Cache<Object, Object> caffeineCache = (com.github.benmanes.caffeine.cache.Cache<Object, Object>) cache.getNativeCache();
@@ -29,6 +30,7 @@ public class ApiController {
                 }
             }
         }
+        // 如果没有找到，返回null
         return null;
     }
 
