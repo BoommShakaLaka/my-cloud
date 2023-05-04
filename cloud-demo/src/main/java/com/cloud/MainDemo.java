@@ -1,10 +1,25 @@
 package com.cloud;
 
-import java.util.LinkedList;
-import java.util.concurrent.ConcurrentHashMap;
+import io.swagger.models.auth.In;
+
+import java.util.HashMap;
 
 public class MainDemo {
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+
+    }
+
+    public boolean equalFrequency(String word) {
+        char[] chars = word.toCharArray();
+        HashMap<Character, Integer> hashMap = new HashMap();
+        for (char c:chars){
+          Integer value = hashMap.get(c);
+            Integer integer = value == null ? hashMap.put(c, 1) : hashMap.put(c, (value + 1));
+        }
+        if (hashMap.size()>1){
+
+        }
+
+        return true;
     }
 }
