@@ -12,7 +12,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableConfigurationProperties
-@EnableScheduling
 @EnableFeignClients(basePackages = "com.cloud.client")
 @MapperScan("com.cloud.mapper")
 public class UserApplicaion {
