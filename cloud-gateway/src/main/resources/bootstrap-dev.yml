@@ -2,9 +2,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        namespace: 48c05ef3-1a13-4234-9113-8a9f5c47ac71
+        namespace: mycloud-ID
       config:
-        namespace: 48c05ef3-1a13-4234-9113-8a9f5c47ac71
+        namespace: mycloud-ID
 
 
 
