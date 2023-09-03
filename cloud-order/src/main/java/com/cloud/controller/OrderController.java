@@ -18,4 +18,11 @@ public class OrderController {
     public Order queryOrderById(@RequestParam("orderId") Long orderId) {
         return orderService.queryOrderById(orderId);
     }
+
+
+    @GetMapping("")
+    public Order queryOrderByName(@RequestParam("orderId") Long orderId) {
+//        return orderService.queryOrderByN(orderId);
+        return null;
+    }
 }

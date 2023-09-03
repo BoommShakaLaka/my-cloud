@@ -6,20 +6,26 @@ import java.util.HashMap;
 
 public class MainDemo {
     public static void main(String[] args) {
-
+        String word1 = "abcd";
+        String word2 = "pq";
+        System.out.println(mergeAlternately(word1, word2));
     }
 
-    public boolean equalFrequency(String word) {
-        char[] chars = word.toCharArray();
-        HashMap<Character, Integer> hashMap = new HashMap();
-        for (char c:chars){
-          Integer value = hashMap.get(c);
-            Integer integer = value == null ? hashMap.put(c, 1) : hashMap.put(c, (value + 1));
+    public static String mergeAlternately(String word1, String word2) {
+        int len1 = word1.length();
+        int len2 = word2.length();
+        int i = 0, j = 0;
+        StringBuilder stringBuilder = new StringBuilder();
+        while (i < len1 || j < len2) {
+            if (i<len1){
+                stringBuilder.append(word1.charAt(i));
+                i++;
+            }
+            if (j<len2){
+                stringBuilder.append(word2.charAt(j));
+                j++;
+            }
         }
-        if (hashMap.size()>1){
-
-        }
-
-        return true;
+        return stringBuilder.toString();
     }
 }
