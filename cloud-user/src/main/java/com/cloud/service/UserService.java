@@ -1,5 +1,6 @@
 package com.cloud.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cloud.entity.User;
 import com.cloud.mapper.UserMapper;
 import lombok.SneakyThrows;
@@ -27,5 +28,10 @@ public class UserService {
 
     public User queryUserByName(String name) {
         return userMapper.queryUserByName(name);
+    }
+
+    public User getUserById(Integer id) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
+        return userMapper.selectById(id);
     }
 }

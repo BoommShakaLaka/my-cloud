@@ -20,11 +20,12 @@ public class RedissonController {
         RLock lock = redissonClient.getLock("redisson_lock");
         try {
             lock.tryLock(100, TimeUnit.SECONDS);
+            System.out.println(Thread.currentThread().getId());
+            Thread.sleep(100000);
         } catch (Exception e) {
             System.out.println(e);
         } finally {
             lock.unlock();
         }
-
     }
 }

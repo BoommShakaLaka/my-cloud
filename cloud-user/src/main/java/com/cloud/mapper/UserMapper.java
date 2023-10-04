@@ -1,10 +1,13 @@
 package com.cloud.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cloud.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.cache.annotation.Cacheable;
 
-public interface UserMapper {
+import java.util.List;
+
+public interface UserMapper extends BaseMapper<User> {
     @Cacheable(unless = "#result == null", cacheManager = "springCacheManager",value = "user", key = "#a0")
     User queryUserById(@Param("userId") Integer id);
 
