@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+@enduml
+
+@startuml
+autonumber
+端侧 -> 云侧: Authentication Request
+云侧 -> 账号: Authentication Request
+账号 --> 云侧: Authentication Response
+端侧->账号
+
+alt 成功
+云侧 --> 端侧: 认证通过
+else 某种失败
+    group 自己的标签
+        loop 3次
+        端侧 -> 云侧: 重试
+        end
+    end
+end
+端侧 -> 云侧: upstream
+云侧 -> mysql: 记录块信息
+云侧 -> mongodb: 文件信息
+云侧 -> cos: 文件
+云侧 --> 端侧:成功
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+alt authType = 0
+端侧->云侧
+alt cloudsplit=true
+alt 笔记
+云侧->云侧:固定分块4MB
+else 图库
+云侧->云侧:动态分片8MB\32MB\128MB
+end
+else cloudsplit=false
+云侧->云侧:备份、共享不分块
+end
+alt providerId=1
+云侧->obs:请求临时权限
+obs-->云侧:AK\SK
+else providerId=2
+云侧->cos:请求临时权限
+cos-->云侧:AK\SK
+end
+云侧-->端侧:分块信息K\SK
+else authType = 1
+端侧->云侧
+alt cloudSplit=true
+云侧->云侧:cloudsplit=true;动态分片8MB\32MB\128MB
+else cloudsplit=false
+云侧->云侧:不分块
+end
+alt providerId=1
+云侧->obs:请求临时权限
+obs-->云侧:AK\SK
+else providerId=2
+云侧->cos:请求临时权限
+cos-->云侧:AK\SK
+end
+云侧-->端侧:分块信息K\SK
+end
+@enduml
