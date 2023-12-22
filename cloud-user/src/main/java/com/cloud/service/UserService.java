@@ -5,6 +5,7 @@ import com.cloud.entity.User;
 import com.cloud.mapper.UserMapper;
 import lombok.SneakyThrows;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,10 +15,12 @@ public class UserService {
     @Resource
     UserMapper userMapper;
 
-    @SneakyThrows
-    @Async("baseThreadPool")
-    public void testThread() {
-        Thread.sleep(1000);
+    @Async("mainThreadPool")
+    public void testMainThread() {
+        System.out.println(Thread.currentThread().getName());
+    }
+
+    public void testSecondThread() {
         System.out.println(Thread.currentThread().getName());
     }
 

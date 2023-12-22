@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @EnableAsync
 public class ThreadPoolConfig {
 
-    @Bean(name = "baseThreadPool")
+    @Bean(name = "mainThreadPool")
     public ThreadPoolTaskExecutor buildThreadPool() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(CommonConfig.properties().getThreadPool().getCorePoolSize());
@@ -19,6 +19,19 @@ public class ThreadPoolConfig {
         executor.setQueueCapacity(CommonConfig.properties().getThreadPool().getQueueCapacity());
         executor.setKeepAliveSeconds(CommonConfig.properties().getThreadPool().getKeepAliveSeconds());
         executor.setThreadNamePrefix(CommonConfig.properties().getThreadPool().getThreadNamePrefix());
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        executor.setWaitForTasksToCompleteOnShutdown(true);
+        return executor;
+    }
+
+    @Bean(name = "secondThreadPool")
+    public ThreadPoolTaskExecutor buildSecondThreadPool() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(CommonConfig.properties().getThreadPool().getCorePoolSize());
+        executor.setMaxPoolSize(CommonConfig.properties().getThreadPool().getMaxPoolSize());
+        executor.setQueueCapacity(CommonConfig.properties().getThreadPool().getQueueCapacity());
+        executor.setKeepAliveSeconds(CommonConfig.properties().getThreadPool().getKeepAliveSeconds());
+        executor.setThreadNamePrefix("Second-thread-");
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.setWaitForTasksToCompleteOnShutdown(true);
         return executor;

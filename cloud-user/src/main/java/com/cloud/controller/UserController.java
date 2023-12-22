@@ -10,10 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 
@@ -27,6 +29,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Resource
+    ThreadPoolTaskExecutor secondThreadPool;
 
     @GetMapping("/info")
     public User getUser() {
@@ -50,11 +54,17 @@ public class UserController {
         return userService.queryUserByName(name);
     }
 
-    @GetMapping("/thread")
-    public void testThread() {
-        System.out.println(CommonConfig.properties().getThreadPool().getCorePoolSize());
+    @GetMapping("/mainThread")
+    public void testMainThread() {
         for (int i = 0; i < 100; i++) {
-            userService.testThread();
+            userService.testMainThread();
+        }
+    }
+
+    @GetMapping("/secondThread")
+    public void testSecondThread() {
+        for (int i = 0; i < 100; i++) {
+            secondThreadPool.execute(() -> userService.testSecondThread());
         }
     }
 
@@ -64,7 +74,7 @@ public class UserController {
     }
 
     @GetMapping("/userInfo/{id}")
-    public User getUserById(@PathVariable Integer id){
+    public User getUserById(@PathVariable Integer id) {
         User user = userService.getUserById(id);
         return user;
     }
