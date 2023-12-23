@@ -13,6 +13,10 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
+    @GetMapping("/fallback")
+    public String fallback() {
+        return "order fallback";
+    }
 
     @GetMapping("/info")
     public Order queryOrderById(@RequestParam("orderId") Long orderId) {

@@ -1,6 +1,5 @@
 package com.cloud.controller;
 
-import com.cloud.config.CommonConfig;
 import com.cloud.entity.Block;
 import com.cloud.entity.User;
 import com.cloud.service.UserService;
