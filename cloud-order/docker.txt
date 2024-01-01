@@ -1,0 +1,14 @@
+1、编写Dockerfile
+FROM openjdk:8-jdk-alpine
+WORKDIR /app
+COPY target/cloud-order-1.0-SNAPSHOT.jar .
+EXPOSE 8082
+CMD ["java", "-jar", "cloud-order-1.0-SNAPSHOT.jar"]
+
+2、制作镜像
+docker build -t myapp .
+
+3、运行容器（不同方式）
+docker run -p 8082:8082 myapp2
+docker run -d --network=host -p 8082:8082 myapp2
+docker run --network=bridge --ip=10.10.10.100 -p 8082:8082 myapp2

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.mapper.OpMapper">
+
+    <insert id="insertOp" parameterType="com.cloud.entity.Op">
+        INSERT INTO `mycloud`.`cfs_op` (`fid`,
+                                        `user_id`,
+                                        `op_code`,
+                                        `device_id`,
+                                        `expire_time`,
+                                        `update_time`,
+                                        `create_time`)
+        VALUES (1738820589688983552,
+                12345,
+                1,
+                'AAAA',
+                1703402108963,
+                1703402108963,
+                1703402108963) on DUPLICATE KEY
+        UPDATE expire_time = 1703402108961;
+    </insert>
+
+    <!-- 查询 -->
+    <select id="selectOpForUpdate" parameterType="com.cloud.entity.Op" resultType="com.cloud.entity.Op">
+        select *
+        from cfs_op
+        where op_code = 1
+          and expire_time > 1603402182665 limit 200 for
+        update
+    </select>
+</mapper>

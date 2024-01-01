@@ -9,12 +9,8 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @EnableWebFluxSecurity
 public class SecurityConfig {
-
-
     @Bean
     public SecurityWebFilterChain fluxSecurityWebFilterChain(ServerHttpSecurity http) {
-        return http
-                .formLogin().disable()
-                .build();
+        return http.formLogin().disable().build();
     }
 }
