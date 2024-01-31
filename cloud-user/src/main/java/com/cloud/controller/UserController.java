@@ -68,8 +68,9 @@ public class UserController {
     }
 
     @GetMapping("/config")
-    public void testConfig() {
+    public String testConfig() {
         System.out.println(url);
+        return url;
     }
 
     @GetMapping("/userInfo/{id}")
