@@ -1,5 +1,6 @@
 package com.cloud.config;
 
+import com.cloud.service.MyCloudServerSecurityContextRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -9,29 +10,25 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
-//@EnableWebFluxSecurity
-//@Configuration
-public class SecurityConfig {
+import javax.annotation.Resource;
+
+@EnableWebFluxSecurity
+@Configuration
+public class SecurityConfig1 {
+    @Resource
+    MyCloudServerSecurityContextRepository myCloudServerSecurityContextRepository;
+
+
     @Bean
     public SecurityWebFilterChain fluxSecurityWebFilterChain(ServerHttpSecurity http) {
         return http
+                .securityContextRepository(myCloudServerSecurityContextRepository)
                 .authorizeExchange()
-                .pathMatchers("/user/config").permitAll() //放行
-                .pathMatchers("/user/info").authenticated() //鉴权（用下面的用户名密码鉴权）
-                //todo 自定义鉴权逻辑
-                .and()
-                .httpBasic()
+                .pathMatchers("/user/config").permitAll()
+                .pathMatchers("/user/info").hasAuthority("ROLE_ADMIN")
+                .anyExchange()
+                .denyAll()
                 .and()
                 .build();
-    }
-
-    @Bean
-    public MapReactiveUserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("user")
-                .roles("USER")
-                .build();
-        return new MapReactiveUserDetailsService(userDetails);
     }
 }
