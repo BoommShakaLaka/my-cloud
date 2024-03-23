@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.minidev.json.annotate.JsonIgnore;
+import org.apache.kafka.common.protocol.types.Field;
+import org.bson.json.JsonObject;
 
 @Data
 @NoArgsConstructor

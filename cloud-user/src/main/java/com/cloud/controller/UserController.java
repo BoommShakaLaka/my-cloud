@@ -55,7 +55,7 @@ public class UserController {
 
     @GetMapping("/mainThread")
     public void testMainThread() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 5; i++) {
             userService.testMainThread();
         }
     }
@@ -69,6 +69,7 @@ public class UserController {
 
     @GetMapping("/config")
     public String testConfig() {
+        log.info("UserController#testConfig:{}", 1);
         System.out.println(url);
         return url;
     }

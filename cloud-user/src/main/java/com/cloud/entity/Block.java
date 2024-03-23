@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class Block {
-    private Integer order;
-    private String objectKey;
-    private Integer size;
-    private Integer locationId;
+    private Integer aaa;
+    private String bbb;
+    private Integer ccc;
+    private Integer ddd;
 }

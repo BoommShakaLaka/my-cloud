@@ -24,8 +24,8 @@ public class SecurityConfig1 {
         return http
                 .securityContextRepository(myCloudServerSecurityContextRepository)
                 .authorizeExchange()
-                .pathMatchers("/user/config").permitAll()
-                .pathMatchers("/user/info").hasAuthority("ROLE_ADMIN")
+                .pathMatchers("/user/info","/user/userInfo/**","/user/mainThread").permitAll()
+                .pathMatchers("/user/config").hasAuthority("ROLE_ADMIN")
                 .anyExchange()
                 .denyAll()
                 .and()

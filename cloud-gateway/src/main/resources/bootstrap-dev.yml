@@ -2,9 +2,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        namespace: mycloud-ID
+        namespace: cloud-dev
       config:
-        namespace: mycloud-ID
+        namespace: cloud-dev
 
 
 

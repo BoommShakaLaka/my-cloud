@@ -7,11 +7,39 @@ springcloudalibaba
 软件架构说明
 
 
-#### 安装教程
+#### 环境安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+###### mysql
+docker启动增加环境变量，指定用户名密码
+###### nacos 单例模式启动
+``` shell
+docker run --name my_nacos -e MODE=standalone -p 8848:8848 -d zhusaidong/nacos-server-m1:2.0.3
+```
+###### 启动kafka 编排
+编写docker-compose.yml文件，并执行(/env/docker-compose.yml)
+```yaml
+version: '3'
+services:
+  zookeeper:
+    image: zookeeper
+    ports:
+      - "2181:2181"
+    restart: always
+
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+```
+``` shell
+docker-compose up -d
+```
 
 #### 使用说明
 

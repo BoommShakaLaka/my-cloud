@@ -16,8 +16,8 @@ public class SecurityConfig {
     public SecurityWebFilterChain fluxSecurityWebFilterChain(ServerHttpSecurity http) {
         return http
                 .authorizeExchange()
-                .pathMatchers("/user/config").permitAll() //放行
-                .pathMatchers("/user/info").authenticated() //鉴权（用下面的用户名密码鉴权）
+                .pathMatchers("/user/info").permitAll() //放行
+                .pathMatchers("/user/config").authenticated() //鉴权（用下面的用户名密码鉴权）
                 //todo 自定义鉴权逻辑
                 .and()
                 .httpBasic()
