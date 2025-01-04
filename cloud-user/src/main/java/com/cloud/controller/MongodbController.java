@@ -19,7 +19,7 @@ public class MongodbController {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    @GetMapping("/mongodb")
+    @GetMapping("/mongodb") 
     public Person getUserById(@RequestParam("id") String id) {
         Optional<Person> person = userRepository.findById(id);
         System.out.println(person.toString());

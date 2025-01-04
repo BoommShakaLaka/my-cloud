@@ -1,6 +1,7 @@
 package com.cloud;
 
 import io.swagger.models.auth.In;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.*;
 
